@@ -24,6 +24,10 @@ private slots:
 
     void on_save_clicked();
 
+    void closeEvent(QCloseEvent *);//重写关闭事件
+signals:
+    void close_signal();
+
 private:
     Ui::CameraSet *ui;
 };

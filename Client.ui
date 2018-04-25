@@ -6,20 +6,47 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>723</width>
-    <height>481</height>
+    <width>284</width>
+    <height>178</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Client</string>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="btn_auto">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>50</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>自动检测</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_manual">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>50</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>手动检测</string>
+    </property>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>723</width>
+     <width>284</width>
      <height>23</height>
     </rect>
    </property>

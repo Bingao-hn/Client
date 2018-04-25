@@ -15,12 +15,15 @@ TEMPLATE = app
 SOURCES += main.cpp\
         Client.cpp \
     CameraSet.cpp \
-    Connect.cpp
+    Connect.cpp \
+    CameraAuto.cpp
 
 HEADERS  += Client.h \
     CameraSet.h \
-    Connect.h
+    Connect.h \
+    CameraAuto.h
 
 FORMS    += Client.ui \
     CameraSet.ui \
-    Connect.ui
+    Connect.ui \
+    CameraAuto.ui

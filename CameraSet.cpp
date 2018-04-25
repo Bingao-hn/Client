@@ -67,3 +67,8 @@ void CameraSet::on_save_clicked()
     QScreen *screen = QGuiApplication::primaryScreen();
     screen->grabWindow(ui->lab_pic->winId()).save(filename1);
 }
+
+void CameraSet::closeEvent(QCloseEvent *event)
+{
+    emit close_signal();
+}
