@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="lab_pic">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -26,7 +26,7 @@
     <string>TextLabel</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="btn_start">
    <property name="geometry">
     <rect>
      <x>340</x>
@@ -37,6 +37,19 @@
    </property>
    <property name="text">
     <string>开始</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_stop">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>370</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>停止</string>
    </property>
   </widget>
  </widget>

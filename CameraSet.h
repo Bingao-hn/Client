@@ -2,6 +2,14 @@
 #define CAMERASET_H
 
 #include <QDialog>
+#include <QTcpSocket>
+#include <QPixmap>
+#include <QBuffer>
+#include <QImage>
+#include <QImageReader>
+#include <QDebug>
+#include <QFileDialog>
+#include <QScreen>
 
 namespace Ui {
 class CameraSet;

@@ -2,6 +2,16 @@
 #define CAMERAAUTO_H
 
 #include <QWidget>
+#include <QTcpSocket>
+#include <QPixmap>
+#include <QBuffer>
+#include <QImage>
+#include <QImageReader>
+#include <QDebug>
+#include <QFileDialog>
+#include <QScreen>
+#include <QTimer>
+#include <QDateTime>
 
 namespace Ui {
 class CameraAuto;
@@ -13,12 +23,17 @@ class CameraAuto : public QWidget
 
 public:
     explicit CameraAuto(QWidget *parent = 0);
+    QTimer *timer;
     ~CameraAuto();
 
 private slots:
-    void on_pushButton_clicked();
-
     void closeEvent(QCloseEvent *);//重写关闭事件
+
+    void slotReadyRead();
+    void on_btn_start_clicked();
+    void autoGet_slot();
+    void on_btn_stop_clicked();
+
 signals:
     void close_signal();
 private:

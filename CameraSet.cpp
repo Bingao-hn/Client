@@ -1,13 +1,6 @@
 #include "CameraSet.h"
 #include "ui_CameraSet.h"
-#include <QTcpSocket>
-#include <QPixmap>
-#include <QBuffer>
-#include <QImage>
-#include <QImageReader>
-#include <QDebug>
-#include <QFileDialog>
-#include <QScreen>
+
 
 extern QTcpSocket* _socket;
 
