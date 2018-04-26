@@ -24,6 +24,7 @@ class CameraAuto : public QWidget
 public:
     explicit CameraAuto(QWidget *parent = 0);
     QTimer *timer;
+    QTcpSocket* auto_socket;
     ~CameraAuto();
 
 private slots:
@@ -33,6 +34,8 @@ private slots:
     void on_btn_start_clicked();
     void autoGet_slot();
     void on_btn_stop_clicked();
+
+    void connectSocket();
 
 signals:
     void close_signal();

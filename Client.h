@@ -28,7 +28,9 @@ private slots:
     void on_btn_manual_clicked();
 
     void on_btn_auto_clicked();
-
+signals:
+    void initSet();
+    void initAuto();
 private:
     Ui::Client *ui;
 };

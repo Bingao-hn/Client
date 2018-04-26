@@ -5,22 +5,29 @@
 #include <QTcpSocket>
 #include <QDebug>
 
-extern QTcpSocket* _socket;
+extern QString serverIp;
 
 Client::Client(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Client)
 {
-    _socket = new QTcpSocket(this);
     ui->setupUi(this);
-
-    camset = new CameraSet();
+    Connect con(this);
+    con.setWindowTitle("请先配置socket参数信息!");
+    con.exec();
     camauto = new CameraAuto();
+    camset = new CameraSet();
+
 
     connect(camset,SIGNAL(close_signal()),
             this,SLOT(close_slot()));
     connect(camauto,SIGNAL(close_signal()),
             this,SLOT(close_slot()));
+    connect(this,SIGNAL(initSet()),
+            camset,SLOT(connectSocket()));
+    connect(this,SIGNAL(initAuto()),
+            camauto,SLOT(connectSocket()));
+
 }
 
 Client::~Client()
@@ -43,6 +50,7 @@ void Client::on_mConnect_triggered()
 void Client::on_btn_manual_clicked()
 {
     this->hide();
+    emit initSet();
     camset->show();
 }
 
@@ -54,5 +62,6 @@ void Client::close_slot()
 void Client::on_btn_auto_clicked()
 {
     this->hide();
+    emit initAuto();
     camauto->show();
 }

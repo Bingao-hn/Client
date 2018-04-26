@@ -22,6 +22,7 @@ class CameraSet : public QDialog
 public:
     explicit CameraSet(QWidget *parent = 0);
     ~CameraSet();
+    QTcpSocket* set_socket;
 
 private slots:
     void on_set_clicked();
@@ -33,6 +34,8 @@ private slots:
     void on_save_clicked();
 
     void closeEvent(QCloseEvent *);//重写关闭事件
+
+    void connectSocket();
 signals:
     void close_signal();
 

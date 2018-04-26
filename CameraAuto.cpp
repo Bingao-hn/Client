@@ -1,7 +1,6 @@
 #include "CameraAuto.h"
 #include "ui_CameraAuto.h"
-
-extern QTcpSocket* _socket;
+extern QString serverIp;
 
 CameraAuto::CameraAuto(QWidget *parent) :
     QWidget(parent),
@@ -9,30 +8,35 @@ CameraAuto::CameraAuto(QWidget *parent) :
 {
     ui->setupUi(this);
     timer = new QTimer(this);
+    auto_socket = new QTcpSocket();
     connect(timer, SIGNAL(timeout()), this, SLOT(autoGet_slot()));
 
-    connect(_socket, SIGNAL(readyRead()),this, SLOT(slotReadyRead()));
+    connect(auto_socket, SIGNAL(readyRead()),this, SLOT(slotReadyRead()));
 }
 
 CameraAuto::~CameraAuto()
 {
     delete ui;
 }
-
+void CameraAuto::connectSocket(){
+    qDebug()<<serverIp;
+    auto_socket->connectToHost(serverIp, 8080);
+}
 void CameraAuto::closeEvent(QCloseEvent *event)
 {
     timer->stop();
+    auto_socket->close();
     emit close_signal();
 }
 
 void  CameraAuto::slotReadyRead()
 {
     // 接收数据，判断是否有数据，如果有，通过readAll函数获取所有数据
-    while(_socket->bytesAvailable() > 0)
+    while(auto_socket->bytesAvailable() > 0)
     {
         QByteArray array;
-        while(_socket->waitForReadyRead(100)){
-                   array.append((QByteArray)_socket->readAll());
+        while(auto_socket->waitForReadyRead(100)){
+                   array.append((QByteArray)auto_socket->readAll());
                }
         QBuffer buffer(&array);
         buffer.open(QIODevice::ReadOnly);
@@ -42,25 +46,26 @@ void  CameraAuto::slotReadyRead()
         {
             QPixmap pix = QPixmap::fromImage(img);
             ui->lab_pic->setPixmap(pix);
+
+            //按时间保存图片
+            int i=QDateTime::currentDateTime().toTime_t();
+            QString fileName = "F:/bishe_data/"+QDateTime::fromTime_t(i).toString("yyyy-MM-dd-hh_mm_ss")+".png";
+            img.save(fileName);
         }
         qDebug() << "qt auto received";
     }
 }
 void CameraAuto::on_btn_start_clicked()
 {
-    timer->start(2000);//设置时间间隔
+    timer->start(10000);//设置时间间隔
 }
 
 void CameraAuto::autoGet_slot()
 {
     qDebug()<<"auto get picture . . . ";
-//    QString strText = "get picture";
-//    _socket->write(strText.toUtf8());
-    int i=QDateTime::currentDateTime().toTime_t();
-    QString fileName = "F:/bishe_data/"+QDateTime::fromTime_t(i).toString("yyyy-MM-dd-hh_mm_ss")+".png";
-    QImage image("F:/logo.jpg");
-
-    image.save(fileName);
+    //给服务器一个信号，让其发送图片
+    QString strText = "get picture";
+    auto_socket->write(strText.toUtf8());
 
 }
 

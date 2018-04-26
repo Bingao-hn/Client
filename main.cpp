@@ -2,7 +2,7 @@
 #include <QApplication>
 #include <QTcpSocket>
 
-QTcpSocket* _socket;
+QString serverIp;
 
 int main(int argc, char *argv[])
 {
