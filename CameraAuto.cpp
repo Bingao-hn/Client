@@ -9,9 +9,18 @@ CameraAuto::CameraAuto(QWidget *parent) :
     ui->setupUi(this);
     timer = new QTimer(this);
     auto_socket = new QTcpSocket();
+    recvThread_auto = new MyThread();
+
     connect(timer, SIGNAL(timeout()), this, SLOT(autoGet_slot()));
 
     connect(auto_socket, SIGNAL(readyRead()),this, SLOT(slotReadyRead()));
+
+    connect(this, SIGNAL(init_signal()), recvThread_auto, SLOT(init()));
+    emit init_signal();
+
+    //获取输入命令，传送给子线程
+    connect(this, SIGNAL(sendCMD(QString)),
+               recvThread_auto, SLOT(recvCMD(QString)));
 }
 
 CameraAuto::~CameraAuto()
@@ -51,6 +60,11 @@ void  CameraAuto::slotReadyRead()
             int i=QDateTime::currentDateTime().toTime_t();
             QString fileName = "F:/bishe_data/"+QDateTime::fromTime_t(i).toString("yyyy-MM-dd-hh_mm_ss")+".png";
             img.save(fileName);
+
+            //保存后马上开始测试该图
+            QString cmd = "result.py 0 8.png";
+            emit sendCMD(cmd);
+            recvThread_auto->start();
         }
         qDebug() << "qt auto received";
     }

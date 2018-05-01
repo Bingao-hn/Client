@@ -25,6 +25,7 @@ public:
     explicit CameraAuto(QWidget *parent = 0);
     QTimer *timer;
     QTcpSocket* auto_socket;
+    MyThread *recvThread_auto;
     ~CameraAuto();
 
 private slots:
@@ -39,6 +40,8 @@ private slots:
 
 signals:
     void close_signal();
+    void init_signal();//初始化mythread线程
+    void sendCMD(const QString &);
 private:
     Ui::CameraAuto *ui;
 };
