@@ -16,12 +16,14 @@ SOURCES += main.cpp\
         Client.cpp \
     CameraSet.cpp \
     Connect.cpp \
-    CameraAuto.cpp
+    CameraAuto.cpp \
+    mythread.cpp
 
 HEADERS  += Client.h \
     CameraSet.h \
     Connect.h \
-    CameraAuto.h
+    CameraAuto.h \
+    mythread.h
 
 FORMS    += Client.ui \
     CameraSet.ui \

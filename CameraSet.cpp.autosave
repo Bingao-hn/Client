@@ -77,3 +77,8 @@ void CameraSet::on_select_clicked()
     ui->test_pic->setText(filename);
 //    qDebug()<<filename;
 }
+
+void CameraSet::on_start_test_clicked()
+{
+    
+}

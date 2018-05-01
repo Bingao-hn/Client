@@ -52,8 +52,7 @@ void MyThread::run()
 
 void MyThread::recvCMD(const QString &cmd)
 {
-    QString pwd = "F:/SVMLL/";
-    arg_cmd = "python "+pwd+cmd;
+    arg_cmd = "python " + cmd;
     qDebug()<<cmd;
 }
 

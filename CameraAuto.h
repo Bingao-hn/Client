@@ -1,6 +1,6 @@
 #ifndef CAMERAAUTO_H
 #define CAMERAAUTO_H
-
+#include "mythread.h"
 #include <QWidget>
 #include <QTcpSocket>
 #include <QPixmap>
