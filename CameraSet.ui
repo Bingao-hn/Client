@@ -33,30 +33,37 @@
    <property name="geometry">
     <rect>
      <x>580</x>
-     <y>360</y>
+     <y>350</y>
      <width>91</width>
-     <height>101</height>
+     <height>112</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout_3">
-    <item row="1" column="0">
+    <item row="2" column="0">
      <widget class="QPushButton" name="select">
       <property name="text">
        <string>选择图片</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
-     <widget class="QPushButton" name="save">
-      <property name="text">
-       <string>save</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
+    <item row="0" column="0">
      <widget class="QPushButton" name="show">
       <property name="text">
        <string>预览</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="save">
+      <property name="text">
+       <string>保存图片</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="start_test">
+      <property name="text">
+       <string>开始测试</string>
       </property>
      </widget>
     </item>

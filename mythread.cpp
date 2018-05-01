@@ -46,13 +46,14 @@ void MyThread::run()
     }
 //    qDebug()<<"str"<<str;
     qDebug()<<"list:"<<list;
-    emit sendMessage(list[0]);
+//    emit sendMessage(list[0]);
 
 }
 
 void MyThread::recvCMD(const QString &cmd)
 {
-    arg_cmd = "python " + cmd;
+    QString pwd = "F:/SVMLL/";
+    arg_cmd = "python "+pwd+cmd;
     qDebug()<<cmd;
 }
 

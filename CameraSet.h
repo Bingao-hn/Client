@@ -25,6 +25,8 @@ public:
     ~CameraSet();
     QTcpSocket* set_socket;
 
+    MyThread *recvThread_set;
+
 private slots:
 
     void on_show_clicked();
@@ -38,8 +40,12 @@ private slots:
     void connectSocket();
     void on_select_clicked();
 
+    void on_start_test_clicked();
+
 signals:
     void close_signal();
+    void init_signal();//初始化mythread线程
+    void sendCMD(const QString &);
 
 private:
     Ui::CameraSet *ui;

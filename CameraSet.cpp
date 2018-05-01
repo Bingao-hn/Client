@@ -10,8 +10,17 @@ CameraSet::CameraSet(QWidget *parent) :
 {
     set_socket = new QTcpSocket();
 
+    recvThread_set = new MyThread();
+
     connect(set_socket, SIGNAL(readyRead()),this, SLOT(slotReadyRead()));
     ui->setupUi(this);
+
+    connect(this, SIGNAL(init_signal()), recvThread_set, SLOT(init()));
+    emit init_signal();
+
+    //获取输入命令，传送给子线程
+    connect(this, SIGNAL(sendCMD(QString)),
+               recvThread_set, SLOT(recvCMD(QString)));
 }
 
 CameraSet::~CameraSet()
@@ -76,4 +85,12 @@ void CameraSet::on_select_clicked()
 //    QFileDialog::getOpenFileName()
     ui->test_pic->setText(filename);
 //    qDebug()<<filename;
+}
+
+void CameraSet::on_start_test_clicked()
+{
+
+    QString cmd = "result.py 0 8.png";
+    emit sendCMD(cmd);
+    recvThread_set->start();
 }
