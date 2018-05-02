@@ -131,3 +131,10 @@ void CameraAuto::on_btn_save_clicked()
     QTextStream out(&file);                 //分行写入文件
     out << ui->textEdit_recv->toPlainText();
 }
+
+
+
+void CameraAuto::on_btn_clear_clicked()
+{
+    ui->textEdit_recv->clear();
+}

@@ -47,6 +47,9 @@ private slots:
 
     void on_btn_save_clicked();
 
+
+    void on_btn_clear_clicked();
+
 signals:
     void close_signal();
     void init_signal();//初始化mythread线程

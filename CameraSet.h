@@ -10,6 +10,10 @@
 #include <QDebug>
 #include <QFileDialog>
 #include <QScreen>
+#include <QMovie>
+#include <QDateTime>
+#include <QMessageBox>
+#include <QTextStream>
 
 namespace Ui {
 class CameraSet;
@@ -41,6 +45,12 @@ private slots:
     void on_select_clicked();
 
     void on_start_test_clicked();
+
+    void receiveResult(const QString &);//接收python脚本返回结果
+
+    void on_btn_clear_clicked();
+
+    void on_btn_save_clicked();
 
 signals:
     void close_signal();

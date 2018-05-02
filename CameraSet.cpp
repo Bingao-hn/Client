@@ -18,6 +18,10 @@ CameraSet::CameraSet(QWidget *parent) :
     connect(this, SIGNAL(init_signal()), recvThread_set, SLOT(init()));
     emit init_signal();
 
+    //更新UI
+    connect(recvThread_set, SIGNAL(sendMessage(QString)),
+               this, SLOT(receiveResult(QString)));
+
     //获取输入命令，传送给子线程
     connect(this, SIGNAL(sendCMD(QString)),
                recvThread_set, SLOT(recvCMD(QString)));
@@ -90,7 +94,52 @@ void CameraSet::on_select_clicked()
 void CameraSet::on_start_test_clicked()
 {
 
-    QString cmd = "result.py 0 8.png";
+    QString cmd = "result.py 1-8.png";
     emit sendCMD(cmd);
     recvThread_set->start();
+
+    QMovie *movie = new QMovie(":\\image\\processing.gif");
+    //QMovie *movie = new QMovie("D:\\QTclient\\client2\\onSaving.gif");
+    ui->lab_status->setMovie(movie);
+    movie->start();
+}
+
+void CameraSet::receiveResult(const QString &str)
+{
+    if(str.isEmpty())
+    {
+        QString info = "请检查服务器连接!";
+
+        qDebug()<<"empty";
+    }
+    else{
+        int i=QDateTime::currentDateTime().toTime_t();
+        QString time = QDateTime::fromTime_t(i).toString("yyyy-MM-dd-hh:mm:ss ");
+        QString send = time + "结果:" +str;
+        ui->textEdit_recv->append(send);
+        qDebug()<<send;
+    }
+//    qDebug()<<"changed";
+    QPixmap pixmap(":\\image\\sleep.jpg");
+    ui->lab_status->setPixmap(pixmap);
+}
+
+void CameraSet::on_btn_clear_clicked()
+{
+    ui->textEdit_recv->clear();
+}
+
+
+void CameraSet::on_btn_save_clicked()
+{
+    QString textFile = QFileDialog::getSaveFileName(this,tr("Save txt"),"",tr("text (*.txt)")); //选择路径
+    //将文本框数据取出并按行排列
+    QFile file(textFile);//文件命名
+    if (!file.open(QFile::WriteOnly | QFile::Text))     //检测文件是否打开
+    {
+        QMessageBox::information(this, "提示", "导出失败，请重新导出!");
+        return;
+    }
+    QTextStream out(&file);                 //分行写入文件
+    out << ui->textEdit_recv->toPlainText();
 }
