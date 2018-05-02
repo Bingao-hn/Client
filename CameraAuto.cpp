@@ -117,11 +117,17 @@ void CameraAuto::receiveResult(const QString &str)
     qDebug()<<"changed";
 }
 
-void CameraAuto::on_pushButton_clicked()
+
+void CameraAuto::on_btn_save_clicked()
 {
-    int i=QDateTime::currentDateTime().toTime_t();
-    QString str = "123";
-    QString time = QDateTime::fromTime_t(i).toString("yyyy-MM-dd-hh:mm:ss");
-    QString send = time + "结果:" +str;
-    ui->textEdit_recv->append(send);
+    QString textFile = QFileDialog::getSaveFileName(this,tr("Save txt"),"",tr("text (*.txt)")); //选择路径
+    //将文本框数据取出并按行排列
+    QFile file(textFile);//文件命名
+    if (!file.open(QFile::WriteOnly | QFile::Text))     //检测文件是否打开
+    {
+        QMessageBox::information(this, "Error Message", "Please Select a Text File!");
+        return;
+    }
+    QTextStream out(&file);                 //分行写入文件
+    out << ui->textEdit_recv->toPlainText();
 }

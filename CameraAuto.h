@@ -13,6 +13,9 @@
 #include <QTimer>
 #include <QDateTime>
 #include <QMovie>
+#include <QFile>
+#include <QMessageBox>
+#include <QTextStream>
 
 namespace Ui {
 class CameraAuto;
@@ -41,7 +44,8 @@ private slots:
 
     void receiveResult(const QString &);//接收python脚本返回结果
 
-    void on_pushButton_clicked();
+
+    void on_btn_save_clicked();
 
 signals:
     void close_signal();
