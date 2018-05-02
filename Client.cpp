@@ -16,8 +16,9 @@ Client::Client(QWidget *parent) :
     con.setWindowTitle("请先配置socket参数信息!");
     con.exec();
     camauto = new CameraAuto();
+    camauto->setWindowTitle("Auto");
     camset = new CameraSet();
-
+    camset->setWindowTitle("Manual");
 
     connect(camset,SIGNAL(close_signal()),
             this,SLOT(close_slot()));

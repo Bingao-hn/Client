@@ -12,6 +12,7 @@
 #include <QScreen>
 #include <QTimer>
 #include <QDateTime>
+#include <QMovie>
 
 namespace Ui {
 class CameraAuto;
@@ -37,6 +38,10 @@ private slots:
     void on_btn_stop_clicked();
 
     void connectSocket();
+
+    void receiveResult(const QString &);//接收python脚本返回结果
+
+    void on_pushButton_clicked();
 
 signals:
     void close_signal();

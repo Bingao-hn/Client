@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>591</width>
+    <width>667</width>
     <height>424</height>
    </rect>
   </property>
@@ -22,8 +22,16 @@
      <height>311</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+     border-width: 1px;
+     border-style: solid;
+     border-color: rgb(255, 170, 0);
+}
+</string>
+   </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string>待载入...</string>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -32,8 +40,8 @@
   <widget class="QPushButton" name="btn_start">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>370</y>
+     <x>490</x>
+     <y>377</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -45,8 +53,8 @@
   <widget class="QPushButton" name="btn_stop">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>370</y>
+     <x>580</x>
+     <y>377</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -55,7 +63,93 @@
     <string>停止</string>
    </property>
   </widget>
+  <widget class="QTextEdit" name="textEdit_recv">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>20</y>
+     <width>231</width>
+     <height>311</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>433</x>
+     <y>5</y>
+     <width>54</width>
+     <height>12</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>测试结果：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>5</y>
+     <width>54</width>
+     <height>12</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>接收图片：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>380</y>
+     <width>54</width>
+     <height>12</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>运行状态：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lab_status">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>376</y>
+     <width>341</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resource.qrc">:/image/sleep.jpg</pixmap>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>340</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
+   </property>
+  </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

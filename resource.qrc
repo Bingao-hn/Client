@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>processing.gif</file>
+        <file>sleep.jpg</file>
+    </qresource>
+</RCC>

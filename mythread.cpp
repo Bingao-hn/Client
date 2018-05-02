@@ -46,7 +46,7 @@ void MyThread::run()
     }
 //    qDebug()<<"str"<<str;
     qDebug()<<"list:"<<list;
-//    emit sendMessage(list[0]);
+    emit sendMessage(list[0]);
 
 }
 

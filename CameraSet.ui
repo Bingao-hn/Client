@@ -10,6 +10,18 @@
     <height>472</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>678</width>
+    <height>472</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>678</width>
+    <height>472</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
@@ -22,8 +34,16 @@
      <height>400</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel{
+     border-width: 1px;
+     border-style: solid;
+     border-color: rgb(255, 170, 0);
+}
+</string>
+   </property>
    <property name="text">
-    <string>loading</string>
+    <string>待载入...</string>
    </property>
    <property name="scaledContents">
     <bool>true</bool>

@@ -21,11 +21,8 @@ void Connect::on_pBtn_connect_clicked()
     serverIp = ui->ip->text();
     QString port = ui->port->text();
 //    _socket->connectToHost(ip, port.toInt());
-
+    this->close();
     //发送一个消息，看是否有应答，有则建立成功
 }
 
-void Connect::on_pushButton_clicked()
-{
-//    _socket->close();
-}
+

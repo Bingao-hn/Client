@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>360</width>
-    <height>266</height>
+    <width>330</width>
+    <height>229</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>330</width>
+    <height>229</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>330</width>
+    <height>229</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
@@ -56,9 +68,9 @@
   <widget class="QWidget" name="gridLayoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>120</x>
      <y>130</y>
-     <width>171</width>
+     <width>81</width>
      <height>41</height>
     </rect>
    </property>
@@ -66,18 +78,24 @@
     <item row="0" column="1">
      <widget class="QPushButton" name="pBtn_connect">
       <property name="text">
-       <string>建立连接</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>断开连接</string>
+       <string>设置</string>
       </property>
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>20</y>
+     <width>161</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>请先设置ip地址和端口号...</string>
+   </property>
   </widget>
  </widget>
  <resources/>

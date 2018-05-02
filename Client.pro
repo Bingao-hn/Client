@@ -29,3 +29,6 @@ FORMS    += Client.ui \
     CameraSet.ui \
     Connect.ui \
     CameraAuto.ui
+
+RESOURCES += \
+    resource.qrc

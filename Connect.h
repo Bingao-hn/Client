@@ -18,7 +18,6 @@ public:
 private slots:
     void on_pBtn_connect_clicked();
 
-    void on_pushButton_clicked();
 
 private:
     Ui::Connect *ui;
