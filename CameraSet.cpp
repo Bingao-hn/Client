@@ -36,6 +36,13 @@ CameraSet::~CameraSet()
 
 void CameraSet::on_show_clicked()
 {
+    //取巧
+//    QString trick = "picture";
+//    set_socket->write(trick.toUtf8());
+//    set_socket->write(trick.toUtf8());
+//    set_socket->write(trick.toUtf8());
+//    set_socket->write(trick.toUtf8());
+//    set_socket->write(trick.toUtf8());
     //给服务器一个信号，让其发送图片
     QString strText = "get picture";
     set_socket->write(strText.toUtf8());
@@ -85,7 +92,7 @@ void CameraSet::closeEvent(QCloseEvent *event)
 
 void CameraSet::on_select_clicked()
 {
-    QString filename = QFileDialog::getOpenFileName(this,tr("请选择测试图片!"),"",tr("Images (*.png *.bmp *.jpg)")); //选择路径
+    QString filename = QFileDialog::getOpenFileName(this,tr("请选择测试图片!"),"",tr("Images (*.png)")); //选择路径
 //    QFileDialog::getOpenFileName()
     ui->test_pic->setText(filename);
 //    qDebug()<<filename;
@@ -94,7 +101,9 @@ void CameraSet::on_select_clicked()
 void CameraSet::on_start_test_clicked()
 {
 
-    QString cmd = "result.py 1-8.png";
+    testPic = ui->test_pic->text();
+//    QString cmd = "result.py 1-8.png";
+    QString cmd = "result.py " + testPic;
     emit sendCMD(cmd);
     recvThread_set->start();
 
@@ -102,6 +111,9 @@ void CameraSet::on_start_test_clicked()
     //QMovie *movie = new QMovie("D:\\QTclient\\client2\\onSaving.gif");
     ui->lab_status->setMovie(movie);
     movie->start();
+
+    QPixmap pixmap(testPic);
+    ui->lab_pic->setPixmap(pixmap);
 }
 
 void CameraSet::receiveResult(const QString &str)
@@ -113,9 +125,9 @@ void CameraSet::receiveResult(const QString &str)
         qDebug()<<"empty";
     }
     else{
-        int i=QDateTime::currentDateTime().toTime_t();
-        QString time = QDateTime::fromTime_t(i).toString("yyyy-MM-dd-hh:mm:ss ");
-        QString send = time + "结果:" +str;
+      //  int i=QDateTime::currentDateTime().toTime_t();
+      //  QString time = QDateTime::fromTime_t(i).toString("yyyy-MM-dd-hh:mm:ss ");
+        QString send = testPic + "结果:" +str;
         ui->textEdit_recv->append(send);
         qDebug()<<send;
     }

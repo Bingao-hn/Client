@@ -28,7 +28,7 @@ public:
     QImage img;
     ~CameraSet();
     QTcpSocket* set_socket;
-
+    QString testPic;
     MyThread *recvThread_set;
 
 private slots:

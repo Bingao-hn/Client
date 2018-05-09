@@ -66,7 +66,8 @@ void  CameraAuto::slotReadyRead()
             img.save(fileName);
 
             //保存后马上开始测试该图
-            QString cmd = "result.py 1-9.png";
+//            QString cmd = "result.py 1-9.png";
+            QString cmd = "result.py " + fileName;
             emit sendCMD(cmd);
             recvThread_auto->start();
         }
@@ -75,7 +76,14 @@ void  CameraAuto::slotReadyRead()
 }
 void CameraAuto::on_btn_start_clicked()
 {
+    int Time;
+    Time = ui->time->text().toFloat() * 60 * 1000;
+
     timer->start(15000);//设置时间间隔
+
+    //给服务器一个信号，让其发送图片
+    QString strText = "get picture";
+    auto_socket->write(strText.toUtf8());
 
     QMovie *movie = new QMovie(":\\image\\processing.gif");
     //QMovie *movie = new QMovie("D:\\QTclient\\client2\\onSaving.gif");
