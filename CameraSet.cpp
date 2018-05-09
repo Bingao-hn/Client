@@ -103,17 +103,23 @@ void CameraSet::on_start_test_clicked()
 
     testPic = ui->test_pic->text();
 //    QString cmd = "result.py 1-8.png";
-    QString cmd = "result.py " + testPic;
-    emit sendCMD(cmd);
-    recvThread_set->start();
+    if(!testPic.isEmpty()){
+        QString cmd = "result.py " + testPic;
+        emit sendCMD(cmd);
+        recvThread_set->start();
 
-    QMovie *movie = new QMovie(":\\image\\processing.gif");
-    //QMovie *movie = new QMovie("D:\\QTclient\\client2\\onSaving.gif");
-    ui->lab_status->setMovie(movie);
-    movie->start();
+        QMovie *movie = new QMovie(":\\image\\processing.gif");
+        //QMovie *movie = new QMovie("D:\\QTclient\\client2\\onSaving.gif");
+        ui->lab_status->setMovie(movie);
+        movie->start();
 
-    QPixmap pixmap(testPic);
-    ui->lab_pic->setPixmap(pixmap);
+        QPixmap pixmap(testPic);
+        ui->lab_pic->setPixmap(pixmap);
+    }
+    else{
+        QMessageBox::information(this, "提示", "请先选择测试图片!");
+        return;
+    }
 }
 
 void CameraSet::receiveResult(const QString &str)
@@ -127,8 +133,10 @@ void CameraSet::receiveResult(const QString &str)
     else{
       //  int i=QDateTime::currentDateTime().toTime_t();
       //  QString time = QDateTime::fromTime_t(i).toString("yyyy-MM-dd-hh:mm:ss ");
-        QString send = testPic + "结果:" +str;
+        QString send = testPic + " 结果:" +str;
         ui->textEdit_recv->append(send);
+        QPixmap pix("F:/bishe_data/temp.png");
+        ui->lab_test->setPixmap(pix);
         qDebug()<<send;
     }
 //    qDebug()<<"changed";

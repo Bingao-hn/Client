@@ -89,6 +89,8 @@ void CameraAuto::on_btn_start_clicked()
     //QMovie *movie = new QMovie("D:\\QTclient\\client2\\onSaving.gif");
     ui->lab_status->setMovie(movie);
     movie->start();
+
+    recvThread_auto->start();
 }
 
 void CameraAuto::autoGet_slot()
@@ -121,6 +123,9 @@ void CameraAuto::receiveResult(const QString &str)
         QString time = QDateTime::fromTime_t(i).toString("yyyy-MM-dd-hh:mm:ss ");
         QString send = time + "结果:" +str;
         ui->textEdit_recv->append(send);
+
+        QPixmap pix("F:/bishe_data/temp.png");
+        ui->lab_test->setPixmap(pix);
     }
     qDebug()<<"changed";
 }

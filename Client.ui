@@ -6,21 +6,9 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>284</width>
-    <height>178</height>
+    <width>499</width>
+    <height>318</height>
    </rect>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>284</width>
-    <height>178</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>284</width>
-    <height>178</height>
-   </size>
   </property>
   <property name="windowTitle">
    <string>Client</string>
@@ -29,11 +17,20 @@
    <widget class="QPushButton" name="btn_auto">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>50</y>
-      <width>75</width>
-      <height>23</height>
+      <x>120</x>
+      <y>200</y>
+      <width>91</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>华文行楷</family>
+      <pointsize>16</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
     </property>
     <property name="text">
      <string>自动检测</string>
@@ -42,23 +39,48 @@
    <widget class="QPushButton" name="btn_manual">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>50</y>
-      <width>75</width>
-      <height>23</height>
+      <x>270</x>
+      <y>200</y>
+      <width>91</width>
+      <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>华文行楷</family>
+      <pointsize>16</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+      <kerning>false</kerning>
+     </font>
     </property>
     <property name="text">
      <string>手动检测</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>-10</y>
+      <width>511</width>
+      <height>321</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/image/background.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <zorder>label</zorder>
+   <zorder>btn_auto</zorder>
+   <zorder>btn_manual</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>284</width>
+     <width>499</width>
      <height>23</height>
     </rect>
    </property>
@@ -77,15 +99,6 @@
    <addaction name="menu_file"/>
    <addaction name="menu_set"/>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="mCameraSet">
    <property name="text">
     <string>相机设置</string>
